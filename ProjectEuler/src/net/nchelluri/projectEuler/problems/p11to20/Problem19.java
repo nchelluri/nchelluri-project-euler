@@ -18,15 +18,14 @@ public class Problem19 {
 
 		int count = 0;
 		while (!(m.ordinal() == Month.January.ordinal() && d == 1 && y == 2001)) {
-			if (is(dayOfWeek, DayOfWeek.Sunday) && d == 1 && y >= 1901) {
+			if (isSundayTheFirst(d, dayOfWeek) && y >= 1901) {
 				count++;
 			}
 			int daysInMonth = 0;
 
-			if (is(m, Month.September) || is(m, Month.April)
-					|| is(m, Month.June) || is(m, Month.November)) {
+			if (has30Days(m)) {
 				daysInMonth = 30;
-			} else if (!is(m, Month.February)) {
+			} else if (isNotFebruary(m)) {
 				daysInMonth = 31;
 			} else {
 				daysInMonth = 28;
@@ -50,7 +49,21 @@ public class Problem19 {
 					% DayOfWeek.values().length];
 		}
 		System.out.println(count);
-		System.out.println("Execution time: " + (System.currentTimeMillis() - time) + "ms");
+		System.out.println("Execution time: "
+				+ (System.currentTimeMillis() - time) + "ms");
+	}
+
+	private static boolean isNotFebruary(Month m) {
+		return !is(m, Month.February);
+	}
+
+	private static boolean has30Days(Month m) {
+		return is(m, Month.September) || is(m, Month.April)
+				|| is(m, Month.June) || is(m, Month.November);
+	}
+
+	private static boolean isSundayTheFirst(int d, DayOfWeek dayOfWeek) {
+		return is(dayOfWeek, DayOfWeek.Sunday) && d == 1;
 	}
 
 	private static boolean is(DayOfWeek d, DayOfWeek d2) {
