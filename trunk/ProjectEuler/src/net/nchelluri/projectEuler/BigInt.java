@@ -7,6 +7,8 @@ import java.math.BigInteger;
 public class BigInt {
 	private final BigInteger value;
 
+	public static BigInt ZERO = BigInt.from(0);
+	
 	public static BigInt from(String strRep) {
 		return new BigInt(strRep);
 	}
