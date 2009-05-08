@@ -40,9 +40,6 @@ public class CalendarDay {
 	}
 
 	public boolean is(Month otherMonth, int otherDayOfMonth, int otherYear) {
-		if (month == null) {
-			System.out.println("what");
-		}
 		return month.is(otherMonth) && dayOfMonth == otherDayOfMonth
 				&& year == otherYear;
 	}
