@@ -112,6 +112,7 @@ public class Problem13 {
 			sum = sum.plus(lines[i]);
 		}
 		System.out.println(sum.toString().substring(0, 10));
+		System.out.println(sum);
 		System.out.println("Execution time: "
 				+ (System.currentTimeMillis() - time) + "ms");
 	}
