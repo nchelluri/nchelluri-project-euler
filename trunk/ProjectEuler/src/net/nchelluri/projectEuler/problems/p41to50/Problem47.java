@@ -14,10 +14,12 @@ public class Problem47 {
 	public static void main(String[] args) {
 		long time = System.currentTimeMillis();
 
-		primes = PrimeGenerator.generatePrimes(10000);
+		primes = PrimeGenerator.generatePrimes(6678);
+		time = System.currentTimeMillis();
 		for (int i = 1;; i++) {
-			if (factorize(i) == 4 && factorize(i + 1) == 4
-					&& factorize(i + 2) == 4 && factorize(i + 3) == 4) {
+			if (primeFactorCount(i) == 4 && primeFactorCount(i + 1) == 4
+					&& primeFactorCount(i + 2) == 4
+					&& primeFactorCount(i + 3) == 4) {
 				System.out.println(i);
 				break;
 			}
@@ -27,11 +29,11 @@ public class Problem47 {
 		System.out.println("maxI = " + maxI);
 	}
 
-	private static Map<Long, Integer> knownFactors = new HashMap<Long, Integer>();
+	private static Map<Long, Integer> knownPrimeFactorCounts = new HashMap<Long, Integer>();
 	private static long maxI = 0;
 
-	private static int factorize(long number) {
-		Integer cached = knownFactors.get(number);
+	private static int primeFactorCount(long number) {
+		Integer cached = knownPrimeFactorCounts.get(number);
 		if (cached != null) {
 			return cached;
 		}
@@ -57,15 +59,15 @@ public class Problem47 {
 					max = otherFactor;
 				}
 			}
-			if (i > maxI) {
-				maxI = i;
+			if (i + 1 > maxI) {
+				maxI = i + 1;
 			}
 		}
 		if (factors.size() == 0) {
 			factors.add(number);
 		}
 
-		knownFactors.put(number, factors.size());
+		knownPrimeFactorCounts.put(number, factors.size());
 		return factors.size();
 	}
 }
