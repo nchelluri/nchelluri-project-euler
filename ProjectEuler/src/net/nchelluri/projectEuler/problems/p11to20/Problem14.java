@@ -1,3 +1,4 @@
+package net.nchelluri.projectEuler.problems.p11to20;
 public class Problem14 {
 	public static void main(String[] args) {
 		// n -> n/2 (n is even)
