@@ -31,6 +31,8 @@ public class BigIntTest extends TestCase {
 	public void testAdd() {
 		assertEquals(new BigInteger("10"), BigInt.from("3").plus("7")
 				.underlying());
+		assertEquals(new BigInteger("10"), BigInt.from(3).plus(BigInt.from(7))
+				.underlying());
 	}
 
 	public void testSubtract() {
@@ -41,6 +43,10 @@ public class BigIntTest extends TestCase {
 	public void testMod() {
 		assertEquals(BigInteger.ZERO, BigInt.from("10").mod("2").underlying());
 		assertEquals(BigInteger.ONE, BigInt.from("11").mod("10").underlying());
+		assertEquals(BigInteger.ZERO, BigInt.from("10").mod(BigInt.from("2"))
+				.underlying());
+		assertEquals(BigInteger.ONE, BigInt.from("11").mod(BigInt.from("10"))
+				.underlying());
 	}
 
 	public void testIsZero() {
