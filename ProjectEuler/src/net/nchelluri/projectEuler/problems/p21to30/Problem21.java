@@ -56,6 +56,9 @@ public class Problem21 {
 				int divisor = i / j;
 				if (divisor != j) {
 					sum += divisor;
+					if (divisor <= max) {
+						max = divisor - 1;
+					}
 				}
 			}
 		}
