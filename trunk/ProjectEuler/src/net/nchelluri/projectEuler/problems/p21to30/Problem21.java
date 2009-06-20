@@ -41,7 +41,11 @@ public class Problem21 {
 				+ (System.currentTimeMillis() - time));
 	}
 
-	private static long sumOfProperDivisorsOf(int i) {
+	public static long sumOfProperDivisorsOf(int i) {
+		if (i == 1) {
+			return 0;
+		}
+
 		long sum = 1;
 
 		if (isPrime(i)) {
