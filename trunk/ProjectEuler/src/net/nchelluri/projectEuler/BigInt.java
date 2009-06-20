@@ -8,7 +8,7 @@ public class BigInt {
 	private final BigInteger value;
 
 	public static BigInt ZERO = BigInt.from(0);
-	
+
 	public static BigInt from(String strRep) {
 		return new BigInt(strRep);
 	}
@@ -20,7 +20,7 @@ public class BigInt {
 	public static BigInt from(BigInteger bigIntegerRep) {
 		return new BigInt(bigIntegerRep);
 	}
-	
+
 	public BigInt dividedBy(String string) {
 		return BigInt.from(value.divide(new BigInteger(string)));
 	}
@@ -89,5 +89,13 @@ public class BigInt {
 
 	private BigInt(BigInteger bigIntegerRep) {
 		value = bigIntegerRep;
+	}
+
+	public BigInt mod(BigInt otherValue) {
+		return BigInt.from(value.mod(otherValue.underlying()));
+	}
+
+	public BigInt plus(BigInt fnMinusTwo) {
+		return BigInt.from(value.add(fnMinusTwo.underlying()));
 	}
 }
