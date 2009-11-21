@@ -5,6 +5,8 @@ import java.util.Collections;
 import java.util.List;
 
 public class Problem24 {
+	static int perms = 0;
+
 	public static void main(String[] args) {
 		long time = System.currentTimeMillis();
 
@@ -44,6 +46,7 @@ public class Problem24 {
 				secondPerm.add(first);
 				retVal.add(secondPerm);
 			} else {
+				System.out.println("wenis");
 				List<Integer> firstPerm = new ArrayList<Integer>();
 				firstPerm.add(second);
 				firstPerm.add(first);
@@ -55,6 +58,9 @@ public class Problem24 {
 				retVal.add(secondPerm);
 			}
 		} else {
+			if (perms >= 1000000) {
+				return retVal;
+			}
 			Collections.sort(pool);
 			for (int i = 0; i < pool.size(); i++) {
 				List<Integer> subList = new ArrayList<Integer>(pool);
@@ -63,6 +69,9 @@ public class Problem24 {
 				for (List<Integer> subPermutation : subPermutations) {
 					subPermutation.add(0, pool.get(i));
 					retVal.add(subPermutation);
+					if (pool.size() == 10) {
+						perms++;
+					}
 				}
 			}
 		}
